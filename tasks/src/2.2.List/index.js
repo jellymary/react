@@ -13,16 +13,19 @@ import './styles.css';
 
 const posts = [
   {
+    id: 1,
     author: 'Парень не промах',
     time: '2 часа назад',
     message: 'Попробую с удовольствием ;)'
   },
   {
+    id: 2,
     author: 'Милая девушка',
     time: '3 часа назад',
     message: 'Можно использовать для выпекания чизкейков :)'
   },
   {
+    id: 3,
     author: 'Скупец',
     time: 'вчера',
     message: 'Цену-то загнули!'
@@ -31,7 +34,7 @@ const posts = [
 
 function renderPost(post) {
   return (
-    <div className="post">
+    <div className="post" key={post.id}>
       <div className="postHeader">
         <span className="postAuthor">{post.author}</span>
         <br />
@@ -43,11 +46,14 @@ function renderPost(post) {
 }
 
 function renderAuthors(posts) {
+  const authors = [];
+  for (const post of posts) {
+    authors.push(<span key={post.id}>{post.author}</span>);
+  }
+
   return (
     <div className="authors">
-      <span>{posts[0].author}</span>
-      <span>{posts[1].author}</span>
-      <span>{posts[2].author}</span>
+      {authors}
     </div>
   );
 }
@@ -55,9 +61,7 @@ function renderAuthors(posts) {
 ReactDom.render(
   <div className="page">
     <div className="posts">
-      {renderPost(posts[0])}
-      {renderPost(posts[1])}
-      {renderPost(posts[2])}
+      {posts.map(p => renderPost(p))}
     </div>
     {renderAuthors(posts)}
   </div>,

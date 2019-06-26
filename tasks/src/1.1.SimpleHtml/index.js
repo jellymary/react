@@ -57,14 +57,14 @@ ReactDom.render(
                 <textarea id="comment" cols={40}></textarea>
             </div>
             <div className="row">
-                <div class="caption">
+                <div className="caption">
                     <label htmlFor="agreement">Согласие</label>
                 </div>
                 <input id="agreement" type="checkbox" defaultChecked />
             </div>
             <br />
             <div className="row" style={{marginTop: "10px", width: "400px", textAlign: "center"}}>
-                <input type="button" class="button" value="Отправить" />
+                <input type="button" className="button" value="Отправить" />
             </div>
         </div>
     </form>,
