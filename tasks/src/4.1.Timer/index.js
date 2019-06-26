@@ -37,15 +37,28 @@ class Timer extends React.Component {
 class TimeDisplay extends React.Component {
   constructor() {
     super();
-    this.state = {
-      localTime: new Date()
-    };
+    this.state = { localTime: new Date() };
+    this.intervalId = null;
   }
 
   render() {
     return (
       <div className="time">{this.state.localTime.toLocaleTimeString()}</div>
     );
+  }
+
+  componentDidMount() {
+    this.intervalId = setInterval(
+      () => {
+        this.setState({localTime: new Date()});
+        console.log('tick');
+      },
+      1000
+      );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
   }
 }
 
